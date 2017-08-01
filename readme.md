@@ -327,7 +327,7 @@ The component `<Link>` can also receive an URL object and it will automatically 
 // pages/index.js
 import Link from 'next/link'
 export default () => (
-  <div>Click <Link href={{ pathname: 'about', query: { name: 'Zeit' }}}><a>here</a></Link> to read more</div>
+  <div>Click <Link href={{ pathname: '/about', query: { name: 'Zeit' }}}><a>here</a></Link> to read more</div>
 )
 ```
 
@@ -359,7 +359,7 @@ export default () => (
 
 ##### Forcing the Link to expose `href` to its child 
 
-If child is an `<a>` tag and doesn't have a href attribute we specify it so that the repetition is not needed by the user. However, sometimes, you’ll want to pass an `<a>` tag inside of a wrapper and the `Link` won’t recognize it as a *hiperlink*, and, consequently, won’t transfer its `href` to the child. In cases like that, you should define a boolean `passHref` property to the `Link`, forcing it to expose its `href` property to the child.
+If child is an `<a>` tag and doesn't have a href attribute we specify it so that the repetition is not needed by the user. However, sometimes, you’ll want to pass an `<a>` tag inside of a wrapper and the `Link` won’t recognize it as a *hyperlink*, and, consequently, won’t transfer its `href` to the child. In cases like that, you should define a boolean `passHref` property to the `Link`, forcing it to expose its `href` property to the child.
 
 ```jsx
 import Link from 'next/link'
@@ -411,7 +411,7 @@ You can use an URL object the same way you use it in a `<Link>` component to `pu
 import Router from 'next/router'
 
 const handler = () => Router.push({
-  pathname: 'about',
+  pathname: '/about',
   query: { name: 'Zeit' }
 })
 

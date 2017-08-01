@@ -5,7 +5,6 @@ import glob from 'glob-promise'
 import WriteFilePlugin from 'write-file-webpack-plugin'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import CaseSensitivePathPlugin from 'case-sensitive-paths-webpack-plugin'
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import UnlinkFilePlugin from './plugins/unlink-file-plugin'
 import PagesPlugin from './plugins/pages-plugin'
 import DynamicChunksPlugin from './plugins/dynamic-chunks-plugin'
@@ -150,7 +149,7 @@ export default async function createCompiler (dir, { dev = false, quiet = false,
         input: ['manifest.js', 'commons.js', 'main.js'],
         output: 'app.js'
       }),
-      new UglifyJsPlugin({
+      new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false },
         sourceMap: false
       })
@@ -170,7 +169,7 @@ export default async function createCompiler (dir, { dev = false, quiet = false,
   const externalBabelConfig = findBabelConfig(dir)
   if (externalBabelConfig) {
     console.log(`> Using external babel configuration`)
-    console.log(`> location: "${externalBabelConfig.loc}"`)
+    console.log(`> Location: "${externalBabelConfig.loc}"`)
     // It's possible to turn off babelrc support via babelrc itself.
     // In that case, we should add our default preset.
     // That's why we need to do this.
