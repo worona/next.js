@@ -1,18 +1,13 @@
 <img width="112" alt="screen shot 2016-10-25 at 2 37 27 pm" src="https://cloud.githubusercontent.com/assets/13041/19686250/971bf7f8-9ac0-11e6-975c-188defd82df1.png">
 
 [![Build Status](https://travis-ci.org/zeit/next.js.svg?branch=master)](https://travis-ci.org/zeit/next.js)
-[![Build status](https://ci.appveyor.com/api/projects/status/gqp5hs71l3ebtx1r/branch/v3-beta?svg=true)](https://ci.appveyor.com/project/arunoda/next-js/branch/v3-beta)
+[![Build status](https://ci.appveyor.com/api/projects/status/gqp5hs71l3ebtx1r/branch/master?svg=true)](https://ci.appveyor.com/project/arunoda/next-js/branch/master)
 [![Coverage Status](https://coveralls.io/repos/zeit/next.js/badge.svg?branch=master)](https://coveralls.io/r/zeit/next.js?branch=master)
 [![Slack Channel](http://zeit-slackin.now.sh/badge.svg)](https://zeit.chat)
 
 Next.js is a minimalistic framework for server-rendered React applications.
 
 **Visit https://learnnextjs.com to get started with Next.js.**
-
----
-
-This is the documentation for our latest **beta** of version 3.0 which comes with **static export** and **dynamic imports**.
-For the documentation of the latest **stable** release, [visit here](https://github.com/zeit/next.js/blob/master/readme.md).
 
 ---
 
@@ -61,7 +56,7 @@ For the documentation of the latest **stable** release, [visit here](https://git
 Install it:
 
 ```bash
-npm install next@beta react react-dom --save
+npm install next react react-dom --save
 ```
 
 and add a script to your package.json like this:
@@ -117,7 +112,7 @@ export default () => (
   <ul><li><a href="./examples/basic-css">Basic css</a></li></ul>
 </details></p>
 
-We bundle [styled-jsx](https://github.com/zeit/styled-jsx) to provide support for isolated scoped CSS. The aim is to support "shadow CSS" resembling of Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
+We bundle [styled-jsx](https://github.com/zeit/styled-jsx) to provide support for isolated scoped CSS. The aim is to support "shadow CSS" similar to Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
 
 ```jsx
 export default () => (
@@ -1066,8 +1061,20 @@ If you want to create re-usable React components that you can embed in your Next
 <details>
   <summary>How do I use CSS-in-JS solutions?</summary>
 
-Next.js bundles [styled-jsx](https://github.com/zeit/styled-jsx) supporting scoped css. However you can use a CSS-in-JS solution in your Next app by just including your favorite library [as mentioned before](#css-in-js) in the document.
+Next.js bundles [styled-jsx](https://github.com/zeit/styled-jsx) supporting scoped css. However you can use any CSS-in-JS solution in your Next app by just including your favorite library [as mentioned before](#css-in-js) in the document.
 </details>
+
+<details>
+  <summary>How do I use CSS preprocessors like SASS / SCSS / LESS?</summary>
+
+Next.js bundles [styled-jsx](https://github.com/zeit/styled-jsx) supporting scoped css. However you can use any CSS preprocessor solution in your Next app by following one of these examples:
+
+- [with-external-scoped-css](./examples/with-external-scoped-css)
+- [with-scoped-stylesheets-and-postcss](./examples/with-scoped-stylesheets-and-postcss)
+- [with-global-stylesheet](./examples/with-global-stylesheet)
+
+</details>
+
 
 <details>
   <summary>What syntactic features are transpiled? How do I change them?</summary>
@@ -1121,6 +1128,12 @@ Yes! Here's an example with [Apollo](./examples/with-apollo).
 <summary>Can I use it with Redux?</summary>
 
 Yes! Here's an [example](./examples/with-redux)
+</details>
+
+<details>
+<summary>Can I use Next with my favorite Javascript library or toolkit?</summary>
+
+Since our first release we've had **many** example contributions, you can check them out in the [examples](./examples) directory
 </details>
 
 <details>
