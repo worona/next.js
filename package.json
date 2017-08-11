@@ -1,5 +1,5 @@
 {
-  "name": "next",
+  "name": "@worona/next",
   "version": "3.0.3",
   "description": "Minimalistic framework for server-rendered React applications",
   "main": "./dist/server/next.js",
