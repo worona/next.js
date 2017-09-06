@@ -29,6 +29,14 @@ const blockedPages = {
 
 export default class Server {
   constructor ({ dir = '.', dev = false, staticMarkup = false, quiet = false, conf = null } = {}) {
+    // When in dev mode, remap the inline source maps that we generate within the webpack portion
+    // of the build.
+    if (dev) {
+      require('source-map-support').install({
+        hookRequire: true
+      })
+    }
+
     this.dir = resolve(dir)
     this.dev = dev
     this.quiet = quiet
@@ -115,14 +123,21 @@ export default class Server {
       },
 
       // This is to support, webpack dynamic imports in production.
-      '/_next/webpack/chunks/:name': async (req, res, params) => {
-        res.setHeader('Cache-Control', 'max-age=365000000, immutable')
+      '/_next/:buildId/webpack/chunks/:name': async (req, res, params) => {
+        if (!this.handleBuildId(params.buildId, res)) {
+          return this.send404(res)
+        }
+
         const p = join(this.dir, this.dist, 'chunks', params.name)
         await this.serveStatic(req, res, p)
       },
 
       // This is to support, webpack dynamic import support with HMR
-      '/_next/webpack/:id': async (req, res, params) => {
+      '/_next/:buildId/webpack/:id': async (req, res, params) => {
+        if (!this.handleBuildId(params.buildId, res)) {
+          return this.send404(res)
+        }
+
         const p = join(this.dir, this.dist, 'chunks', params.id)
         await this.serveStatic(req, res, p)
       },
